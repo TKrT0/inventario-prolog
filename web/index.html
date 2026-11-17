@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Inventario y compras</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al inventario</a>
+    <header class="cabecera">
+      <div class="ancho encabezado">
+        <div>
+          <h1>Inventario y compras</h1>
+          <p>Consulta stock.</p>
+        </div>
+        <button id="actualizar" class="boton-claro" type="button">Actualizar</button>
+      </div>
+    </header>
+
+    <main id="contenido" class="ancho" tabindex="-1">
+      <div class="mensajes">
+        <p id="estado" role="status" aria-live="polite">Cargando inventario…</p>
+        <p id="error-general" class="error" role="alert" hidden></p>
+      </div>
+      <noscript>Activa JavaScript para consultar y editar el inventario.</noscript>
+      <div class="distribucion">
+        <section aria-labelledby="titulo-inventario">
+          <div class="titulo-seccion">
+            <h2 id="titulo-inventario">Existencias</h2>
+            <span id="conteo-productos"></span>
+          </div>
+          <p class="descripcion">El mínimo indica cuándo hace falta reponer.</p>
+          <p class="ayuda-tabla">Desplaza la tabla para ver el estado y editar.</p>
+          <div class="tabla-scroll" role="region" aria-label="Tabla de existencias, desplazable horizontalmente" tabindex="0">
+            <table>
+              <caption class="solo-lector">Inventario actual y necesidades de reposición</caption>
+              <thead>
+                <tr><th scope="col">Producto</th><th scope="col" class="numero">Hay</th><th scope="col" class="numero">Mínimo</th><th scope="col">Estado</th><th scope="col"><span class="solo-lector">Acciones</span></th></tr>
+              </thead>
+              <tbody id="inventario-body"></tbody>
+            </table>
+          </div>
+
+          <section id="editor" class="editor" aria-labelledby="titulo-editor" hidden>
+            <h2 id="titulo-editor">Editar producto</h2>
+            <p id="proveedor-editor" class="descripcion"></p>
+            <form id="formulario">
+              <fieldset id="campos">
+                <legend class="solo-lector">Cantidades del producto</legend>
+                <div class="entradas">
+                  <label>Existencias<input id="cantidad" name="cantidad" type="number" min="0" max="9007199254740991" step="1" required inputmode="numeric"></label>
+                  <label>Stock mínimo<input id="minimo" name="minimo" type="number" min="0" max="9007199254740991" step="1" required inputmode="numeric"></label>
+                </div>
+                <p class="ayuda">Usa unidades enteras, sin valores negativos.</p>
+                <p id="error-formulario" class="error" role="alert" hidden></p>
+                <div class="acciones">
+                  <button id="guardar" type="submit">Guardar cambios</button>
+                  <button id="cancelar" class="secundario" type="button">Cancelar</button>
+                </div>
+              </fieldset>
+            </form>
+          </section>
+        </section>
+
+        <section class="compras" aria-labelledby="titulo-compras">
+          <div class="titulo-seccion"><h2 id="titulo-compras">Lista de compras</h2><span id="conteo-compras"></span></div>
+          <p class="descripcion">Lo necesario para alcanzar cada mínimo.</p>
+          <table class="tabla-compras">
+            <caption class="solo-lector">Productos que faltan y sus proveedores</caption>
+            <thead><tr><th scope="col">Producto y proveedor</th><th scope="col" class="numero">Comprar</th></tr></thead>
+            <tbody id="compras-body"></tbody>
+          </table>
+          <p id="sin-compras" class="vacio" hidden><strong>Todo al día.</strong> Ningún producto está por debajo del mínimo.</p>
+        </section>
+      </div>
+      <footer>Las reglas se resuelven en Prolog. Los cambios se guardan en este equipo.</footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+# Datos locales y documentos de trabajo
+/data/
+/docs/
+/.impeccable/
+/PRODUCT.md
+/DESIGN.md
+
+# Entornos, cachés y credenciales
+/.venv*/
+__pycache__/
+*.py[cod]
+*.qlf
+.env
+.env.*
