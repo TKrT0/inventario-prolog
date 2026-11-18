@@ -5,7 +5,7 @@ Aplicación web local con reglas y backend en **SWI-Prolog**. La interfaz usa HT
 Proyecto académico de inventario basado en hechos, reglas e inferencia lógica.
 
 - [Guía rápida de ejecución y consultas](GUIA_EJECUCION.md)
-- [Guion completo de exposición](EXPOSICION.md)
+- [Exposición](EXPOSICION.md)
 
 ## Qué permite hacer
 
